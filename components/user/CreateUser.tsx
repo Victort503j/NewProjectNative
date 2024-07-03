@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, View, TouchableOpacity, ToastAndroid, TextInput } from "react-native";
+import { Text, View, TouchableOpacity, ToastAndroid, TextInput, ScrollView } from "react-native";
 import { useUsersStore } from "../../Stores/user.store";
 import RNPickerSelect from "react-native-picker-select";
 import { useRolesStore } from "../../Stores/rol.store";
@@ -7,7 +7,7 @@ import { useRolesStore } from "../../Stores/rol.store";
 
 const CreateUser = ({ onCloseModal }: { onCloseModal: () => void }) => {
   const { OnCreate } = useUsersStore();
-  const { OnGetRoles, roles } = useRolesStore();
+  const { OnGetAllRoles, roles } = useRolesStore();
   const [department, setDepartment] = useState("");
   const [municipality, setMunicipality] = useState("");
   const [complement, setComplement] = useState("");
@@ -33,96 +33,88 @@ const CreateUser = ({ onCloseModal }: { onCloseModal: () => void }) => {
   };
 
   useEffect(() => {
-    OnGetRoles(1, 5, "");
+    OnGetAllRoles(); // Aquí estaba el paréntesis extra
   }, []);
 
   return (
-    <>
-      <TextInput
-        value={name}
-        onChangeText={setName}
-        style={inputStyle}
-        placeholder="Ingrese el nombre del usuario"
-      />
-      <TextInput
-        value={lastName}
-        onChangeText={setLastName}
-        style={inputStyle}
-        placeholder="Ingrese el apellido"
-      />
-      <RNPickerSelect
-        onValueChange={(value) => setRolId(value)}
-        items={roles.map((role) => ({ label: role.name, value: role.id }))}
-        style={pickerSelectStyles}
-        value={rolId}
-      />
-      <TextInput
-        value={email}
-        onChangeText={setEmail}
-        style={inputStyle}
-        placeholder="Ingrese el email"
-      />
-      <TextInput
-        value={password}
-        onChangeText={setPassword}
-        style={inputStyle}
-        placeholder="Ingrese la contraseña"
-        secureTextEntry
-      />
-      <TextInput
-        value={department}
-        onChangeText={setDepartment}
-        style={inputStyle}
-        placeholder="Ingrese el departamento"
-      />
-      <TextInput
-        value={municipality}
-        onChangeText={setMunicipality}
-        style={inputStyle}
-        placeholder="Ingrese el municipio"
-      />
-      <TextInput
-        value={complement}
-        onChangeText={setComplement}
-        style={inputStyle}
-        placeholder="Ingrese el complemento"
-      />
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-around",
-          marginTop: 10,
-        }}
-      >
-        <TouchableOpacity
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <>
+        <TextInput
+          value={name}
+          onChangeText={setName}
+          style={inputStyle}
+          placeholder="Ingrese el nombre del usuario"
+        />
+        <TextInput
+          value={lastName}
+          onChangeText={setLastName}
+          style={inputStyle}
+          placeholder="Ingrese el apellido"
+        />
+        <RNPickerSelect
+          onValueChange={(value) => setRolId(value)}
+          items={roles.map((role) => ({ label: role.name, value: role.id }))}
+          style={pickerSelectStyles}
+          value={rolId}
+        />
+        <TextInput
+          value={email}
+          onChangeText={setEmail}
+          style={inputStyle}
+          placeholder="Ingrese el email"
+        />
+        <TextInput
+          value={password}
+          onChangeText={setPassword}
+          style={inputStyle}
+          placeholder="Ingrese la contraseña"
+          secureTextEntry
+        />
+        <TextInput
+          value={department}
+          onChangeText={setDepartment}
+          style={inputStyle}
+          placeholder="Ingrese el departamento"
+        />
+        <TextInput
+          value={municipality}
+          onChangeText={setMunicipality}
+          style={inputStyle}
+          placeholder="Ingrese el municipio"
+        />
+        <TextInput
+          value={complement}
+          onChangeText={setComplement}
+          style={inputStyle}
+          placeholder="Ingrese el complemento"
+        />
+        <View
           style={{
-            backgroundColor: "crimson",
-            borderRadius: 5,
-            padding: 10,
-            marginRight: 58,
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-around",
+            marginTop: 10,
           }}
-          onPress={onCloseModal}
         >
-          <Text style={{ color: "white", fontWeight: "bold", marginTop: 2 }}>
-            Cancelar
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            backgroundColor: "#00ABED",
-            borderRadius: 5,
-            padding: 10,
-            marginLeft: 8,
-          }}
-          onPress={CreateUsers}
-        >
-          <Text style={{ color: "white", fontWeight: "bold", marginTop: 2 }}>
-            Aceptar
-          </Text>
-        </TouchableOpacity>
-      </View>
-    </>
+          <TouchableOpacity
+            style={Button.cancelButton}
+            onPress={onCloseModal}
+          >
+            <Text style={{ color: "white", fontWeight: "bold", marginTop: 2 }}>
+              Cancelar
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={Button.createButton}
+            onPress={CreateUsers}
+          >
+            <Text style={{ color: "white", fontWeight: "bold", marginTop: 2 }}>
+              Aceptar
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </>
+    </ScrollView>
   );
 };
 
@@ -136,6 +128,23 @@ const inputStyle = {
   marginTop: 20,
   margin: 20,
 };
+
+
+const Button = {
+  createButton: {
+    backgroundColor: "#00ABED",
+    borderRadius: 5,
+    padding: 10,
+    marginLeft: 8,
+  },
+  cancelButton: {
+    backgroundColor: "crimson",
+    borderRadius: 5,
+    padding: 10,
+    marginRight: 58,
+  },
+};
+
 
 const pickerSelectStyles = {
   inputIOS: {

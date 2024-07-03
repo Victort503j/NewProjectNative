@@ -3,11 +3,12 @@ import { IRolesStore } from "../types/Rol-store.types";
 import {
   create_rol,
   delete_rol,
+  get_all_roles,
   get_roles,
   update_rol,
 } from "../service/Rol.service";
 import { ICreateRoles, IUpdateRoles } from "../types/Rol.types";
-import { IPagination } from "../types/pagination.types";
+import { IPagination } from "../types/Pagination.types";
 
 export const useRolesStore = create<IRolesStore>((set, get) => ({
   roles: [],
@@ -27,6 +28,15 @@ export const useRolesStore = create<IRolesStore>((set, get) => ({
           ok: data.ok,
         },
       });
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
+  async OnGetAllRoles() {
+    try {
+      const {data} = await get_all_roles();
+      set({ roles: data.roles });
     } catch (error) {
       console.error(error);
     }

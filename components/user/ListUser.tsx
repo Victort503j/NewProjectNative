@@ -25,7 +25,7 @@ function ListUser() {
         pagination_users,
     } = useUsersStore();
     const {
-        OnGetRoles,
+        OnGetAllRoles,
     } = useRolesStore();
     const [currentPage, setCurrentPage] = useState(1);
     const [searchTerm, setSearchTerm] = useState("");
@@ -38,7 +38,7 @@ function ListUser() {
 
     useEffect(() => {
         OnGetUsers(currentPage, 5, searchQuery);
-        OnGetRoles(currentPage, 5, searchQuery);
+        OnGetAllRoles();
     }, [currentPage, searchQuery]);
 
     const handleSearchChange = (text: string) => {

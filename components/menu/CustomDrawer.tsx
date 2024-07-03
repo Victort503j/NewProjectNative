@@ -7,6 +7,7 @@ import ListUser from '../user/ListUser';
 import ListRol from '../rol/ListRol';
 import Login from '../login/Login';
 import { useAuthStore } from '../../Stores/Auth.store';
+import ListImage from '../image/ListImage';
 
 const Drawer = createDrawerNavigator();
 
@@ -50,6 +51,7 @@ const DrawerNavegation = () => {
                     <Drawer.Screen name="Usuarios" component={ListUser} />
                     <Drawer.Screen name="Login" component={Login} />
                     <Drawer.Screen name="Roles" component={ListRol} />
+                    <Drawer.Screen name="Images" component={ListImage} />
                 </Drawer.Navigator>
             ) : (
                 <Login />

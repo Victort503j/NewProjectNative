@@ -16,11 +16,13 @@
     "expo": "~51.0.13",
     "expo-secure-store": "^13.0.1",
     "expo-status-bar": "~1.12.1",
+    "lucide-react": "^0.394.0",
     "react": "18.2.0",
     "react-native": "0.74.2",
     "react-native-picker-select": "^9.1.3",
     "react-native-reanimated": "~3.10.1",
-    "zustand": "^4.5.2"
+    "zustand": "^4.5.2",
+    "@react-native-picker/picker": "2.7.5"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

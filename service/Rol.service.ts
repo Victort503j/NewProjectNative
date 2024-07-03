@@ -1,6 +1,7 @@
 import axios from "axios";
 import {
   ICreateRoles,
+  IGetRoles,
   IGetRolesPaginated,
   IResponseRoles,
   IUpdateRoles,
@@ -16,13 +17,22 @@ const getAuthHeader = async () => {
 export const get_roles = async (page: number, limit: number, name: string) => {
   const authHeader = await getAuthHeader();
   return axios.get<IGetRolesPaginated>(
-    API_URL + `/roles?page=${page}&limit=${limit}&name=${name}`,
+    API_URL + `/roles/rolePaginated?page=${page}&limit=${limit}&name=${name}`,
     {
       headers: {
         Authorization: authHeader,
       },
     }
   );
+};
+
+export const get_all_roles = async () => {
+  const authHeader = await getAuthHeader();
+  return axios.get<IResponseRoles>(API_URL + `/roles`, {
+    headers: {
+      Authorization: authHeader,
+    },
+  });
 };
 
 export const delete_rol = async (id: number) => {

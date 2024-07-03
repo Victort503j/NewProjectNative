@@ -7,7 +7,7 @@ import {
   get_users,
   update_users,
 } from "../service/User.service";
-import { IPagination } from "../types/pagination.types";
+import { IPagination } from "../types/Pagination.types";
 
 export const useUsersStore = create<IUsersStore>((set, get) => ({
   users: [],

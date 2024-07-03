@@ -33,8 +33,8 @@ export interface IUpdateUsers {
   name: string;
   lastName: string;
   email: string;
-  password: string;
-  address: {
+  password?: string;
+  address?: {
     department: string;
     municipality: string;
     complement: string;

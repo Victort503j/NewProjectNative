@@ -1,4 +1,4 @@
-import { IPagination } from "./pagination.types";
+import { IPagination } from "./Pagination.types";
 import { ICreateUsers, IGetUsers, IUpdateUsers } from "./User.types";
 
 export interface IUsersStore {

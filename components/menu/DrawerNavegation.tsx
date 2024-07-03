@@ -59,6 +59,15 @@ const CustomMenu = ({ navigation }: DrawerContentComponentProps) => {
                         <FontAwesome5 name="users" size={23} color="black" style={styles.icon} />
                     </Pressable>
                 </View>
+                <View style={styles.buttonContainer}>
+                    <Pressable
+                        style={styles.button}
+                        onPress={() => navigation.navigate('Images')}
+                    >
+                        <Text style={styles.buttonText}>Ir a imagenes</Text>
+                        <FontAwesome5 name="image" size={23} color="black" style={styles.icon} />
+                    </Pressable>
+                </View>
                 <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
                     <Text style={styles.logoutText}>Cerrar sesión</Text>
                     <FontAwesome5 name="sign-out-alt" size={20} color="black" style={styles.logoutIcon} />
