@@ -6,6 +6,7 @@ import { DrawerContent, createDrawerNavigator } from '@react-navigation/drawer';
 import Home from './home/Home';
 import ListUser from './components/user/ListUser';
 import DrawerNavegation from './components/menu/CustomDrawer';
+import './Global.css';
 
 
 const Drawer = createDrawerNavigator();
@@ -13,7 +14,7 @@ const Drawer = createDrawerNavigator();
 export default function App() {
   return (
     <DrawerNavegation>
-      
+
     </DrawerNavegation>
   );
 }

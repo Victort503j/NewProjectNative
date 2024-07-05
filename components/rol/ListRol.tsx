@@ -64,7 +64,7 @@ function ListRol() {
     }
 
     return (
-        <View style={{ flex: 1 }}>
+        <View>
             <ScrollView style={{ minHeight: '100%' }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 10 }}>
                     <TextInput

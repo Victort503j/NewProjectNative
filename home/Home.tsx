@@ -1,5 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet, Image, SafeAreaView } from 'react-native';
+import './Global.css';
+
 
 function Home() {
     return (
